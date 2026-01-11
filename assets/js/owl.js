@@ -3446,15 +3446,3 @@
 	}
 
 })(window.Zepto || window.jQuery, window, document);
-
-$('.owl-banner').owlCarousel({
-  items: 1,
-  loop: true,
-  autoplay: true,
-  autoplayTimeout: 5000,
-  autoplayHoverPause: true,
-  dots: true,
-  nav: false,
-  animateOut: 'fadeOut',
-  animateIn: 'fadeIn'
-});
