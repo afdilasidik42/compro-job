@@ -340,6 +340,47 @@
       }
     </script>
 
+<script>
+        function initShareButtons() {
+        // ambil judul artikel (prioritas h2)
+        const h2 = document.querySelector("h2");
+        const titleText = h2 ? h2.innerText.trim() : document.title;
+
+        const title = encodeURIComponent(titleText);
+        const url = encodeURIComponent(window.location.href);
+
+        const wa = document.querySelector(".wa");
+        const tw = document.querySelector(".tw");
+        const fb = document.querySelector(".fb");
+        const ln = document.querySelector(".ln"); // IG -> Copy link
+
+        if (wa) {
+            wa.href = `https://wa.me/?text=${title}%0A${url}`;
+        }
+
+        if (tw) {
+            tw.href = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+        }
+
+        if (fb) {
+            fb.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        }
+
+        if (ln) {
+            ln.addEventListener("click", function (e) {
+            e.preventDefault();
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert("Link berhasil disalin!");
+            });
+            });
+        }
+        }
+
+        // langsung jalan
+        document.addEventListener("DOMContentLoaded", initShareButtons);
+    </script>
+
+
       </body>
 
 </html>

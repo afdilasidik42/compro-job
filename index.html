@@ -21,10 +21,11 @@
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="assets/images/LOGO_ACA_180_x180-removebg-preview.png">
 
-  <!-- GOOGLE FONTS -->
+  <!-- GOOGLE META -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
 
   <!-- OPEN GRAPH -->
   <meta property="og:type" content="website">
@@ -46,7 +47,7 @@
   <!-- BOOTSTRAP CORE CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     
 
 
@@ -83,7 +84,6 @@
 
 
   <body>
-
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -95,44 +95,44 @@
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-    <header>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
+    <header class="site-header">
+      <div class="header-inner container">
+
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand notranslate" href="index.html">
             <h2>PT. Andalira <em>Cipta Abadi</em></h2>
           </a>
 
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarResponsive" aria-controls="navbarResponsive" 
-            aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="products.html">Our Product</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="cust.html">Customers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Our Blog</a>
-              </li>
-                <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="products.html">Our Product</a></li>
+              <li class="nav-item"><a class="nav-link" href="cust.html">Our Customer</a></li>
+              <li class="nav-item"><a class="nav-link" href="blog.html">Our Blog</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
           </div>
+        </nav>
+
+        <!-- FLAG (OUTSIDE NAVBAR) -->
+        <div class="lang-head">
+          <button id="langToggle" class="lang-flag" aria-label="Change language">
+            <img id="langFlag"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg"
+              alt="ID">
+          </button>
         </div>
-      </nav>
+
+      </div>
     </header>
+
 
 
     <!-- Page Content -->
@@ -696,17 +696,17 @@
       });
     };
 
-let started = false;
-window.addEventListener('scroll', () => {
-  const section = document.querySelector('.company-highlight');
-  const position = section.getBoundingClientRect().top;
+    let started = false;
+    window.addEventListener('scroll', () => {
+      const section = document.querySelector('.company-highlight');
+      const position = section.getBoundingClientRect().top;
 
-  if (position < window.innerHeight && !started) {
-    runCounter();
-    started = true;
-  }
-});
-</script>
+      if (position < window.innerHeight && !started) {
+        runCounter();
+        started = true;
+      }
+    });
+    </script>
 
 <!-- ==========================
      SCRIPT
@@ -748,6 +748,69 @@ window.addEventListener('scroll', () => {
      aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
+
+  <div id="google_translate_element" style="display:none;"></div>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,id',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    function applyLanguage(lang) {
+      const select = document.querySelector('.goog-te-combo');
+      if (!select) {
+        setTimeout(() => applyLanguage(lang), 300);
+        return;
+      }
+      select.value = lang;
+      select.dispatchEvent(new Event('change'));
+      localStorage.setItem('siteLang', lang);
+      updateFlag(lang);
+    }
+
+    function updateFlag(lang) {
+      const desktopFlag = document.getElementById('langFlag');
+      const mobileFlag = document.getElementById('langFlagMobile');
+
+      const src = lang === 'id'
+        ? 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg'
+        : 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg';
+
+      if (desktopFlag) desktopFlag.src = src;
+      if (mobileFlag) mobileFlag.src = src;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('siteLang') || 'en';
+      updateFlag(savedLang);
+
+      document.getElementById('langToggle')?.addEventListener('click', () => {
+        const current = localStorage.getItem('siteLang') || 'en';
+        applyLanguage(current === 'en' ? 'id' : 'en');
+      });
+
+      document.getElementById('langToggleMobile')?.addEventListener('click', () => {
+        const current = localStorage.getItem('siteLang') || 'en';
+        applyLanguage(current === 'en' ? 'id' : 'en');
+      });
+
+      if (savedLang !== 'en') applyLanguage(savedLang);
+    });
+
+    /* Mobile killer for Google bar (best effort) */
+    setInterval(() => {
+      const banner = document.querySelector('iframe.goog-te-banner-frame');
+      if (banner) {
+        banner.style.display = 'none';
+        document.body.style.top = '0px';
+      }
+    }, 500);
+  </script>
+
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   </body>
 

@@ -214,8 +214,8 @@ a.filled-button:hover {
    HEADER BASE
 ================================ */
 header {
-  position: fixed;
-  top: 0;
+  position: fixed !important;
+  top: 0 !important;
   left: 0;
   z-index: 99999;
   width: 100%;
@@ -2943,6 +2943,152 @@ html, body {
   background-color: #f1f5f9;
   transition: background 0.2s ease;
 }
+
+
+/* ===== TABLE STYLING FOR TECHNICAL CONTENT ===== */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse; /* WAJIB biar garis nyatu */
+  margin: 24px 0;
+  font-size: 14px;
+  background-color: #ffffff;
+}
+
+/* Header table */
+.blog-content table thead th {
+  background-color: #82868c;
+  color: #222;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+}
+
+/* Isi table */
+.blog-content table tbody td {
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+/* Zebra stripe biar kebaca */
+.blog-content table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover effect (opsional, tapi cakep) */
+.blog-content table tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+/* Responsive ringan (mobile aman) */
+@media (max-width: 768px) {
+  .blog-content table {
+    font-size: 13px;
+  }
+}
+
+/* ================================
+   GLOBAL RESET
+================================ */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ================================
+   HEADER
+================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #111;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* NAVBAR FULL WIDTH */
+.header-inner .navbar {
+  flex: 1;
+  padding: 6px 0;
+}
+
+/* ================================
+   PURE FLAG BUTTON
+================================ */
+/* HEADER */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #111;
+}
+
+/* LAYOUT */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* NAVBAR */
+.header-inner .navbar {
+  flex: 1;
+  padding: 6px 0;
+}
+
+/* SAFE FLAG RESET */
+.lang-flag {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-flag img {
+  width: 22px;
+  height: 14px;
+  object-fit: cover;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.lang-flag:hover img {
+  transform: scale(1.08);
+  opacity: .85;
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+  .lang-flag img {
+    width: 26px;
+    height: 17px;
+  }
+}
+
+/* GOOGLE TRANSLATE CLEAN */
+.goog-logo-link,
+.goog-te-banner-frame,
+.goog-te-gadget,
+iframe.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+
+
 
 /* Mobile */
 @media (max-width: 768px) {
