@@ -90,9 +90,12 @@ a.filled-button:hover {
   background-image: url(../images/bannerabout2.jpg);
 }
 
-
+/*update banner contact*/
 .banner-contact {
-  background-image: url(../images/cb.jpg);
+  background-image: url(../images/contactImage.jpeg);
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background-position: center center;
 }
 
 .banner {
@@ -113,6 +116,7 @@ a.filled-button:hover {
   text-align: center;
   padding: 0 20px;
 }
+
 
 
 .page-heading .text-content h4 {
@@ -561,6 +565,13 @@ header .navbar .container {
     padding-top: 56px;
   }
   
+  /*update banner contact*/
+  .banner-contact {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    min-height: 250px;
+  }
+  
   .banner .text-content h2 {
     font-size: 28px;
     letter-spacing: 1px;
@@ -586,6 +597,13 @@ header .navbar .container {
     padding-top: 56px;
   }
   
+  /*update banner contact*/
+  .banner-contact {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    min-height: 350px;
+  }
+  
   .banner .text-content h2 {
     font-size: 42px;
     letter-spacing: 2px;
@@ -609,6 +627,13 @@ header .navbar .container {
     min-height: 680px;
     margin-top: -80px;
     padding-top: 80px;
+  }
+  
+  /*update banner contact*/
+  .banner-contact {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    min-height: 450px;
   }
 }
 
